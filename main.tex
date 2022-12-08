@@ -1,7 +1,8 @@
-\documentclass[handout, 9pt, compress]{beamer}
+\documentclass[9pt, compress]{beamer}
 \input{preamble}
-\title{Operadores de Fredholm entre \texorpdfstring{\ensuremath{C^*}}{C*}-módulos de Hilbert}
-\author{Gustavo Pauzner Mezzovilla}
+\definecolor{amber}{rgb}{1.0, 0.75, 0.0}
+\title{}
+\author{}
 \date{}
 
 \begin{document}
@@ -9,7 +10,22 @@
 {\usebackgroundtemplate{%
   \transparent{0.4}\includegraphics[width=\paperwidth,height=\paperheight]{capa}} 
 \begin{frame}
-    \maketitle
+    %\maketitle
+\begin{figure}[H]
+\centering
+    \begin{tikzpicture}{scale=2}
+    \node at (0,3) [fill=amber, opacity=0.65] {\huge \begin{tabular}{c}
+         \textbf{Operadores de Fredholm entre} \\
+         \textbf{\texorpdfstring{\ensuremath{\boldsymbol{C^*}}}{C*}-módulos de Hilbert} 
+    \end{tabular}};
+    \node at (0,3) {\huge \begin{tabular}{c}
+         \textbf{Operadores de Fredholm entre} \\
+         \textbf{\texorpdfstring{\ensuremath{\boldsymbol{C^*}}}{C*}-módulos de Hilbert} 
+    \end{tabular}};
+\node at (0,1) [fill=amber, opacity=0.6] {\Large Gustavo Pauzner Mezzovilla};
+\node at (0,1)  {\Large Gustavo Pauzner Mezzovilla};
+\end{tikzpicture}
+\end{figure}
 \end{frame}
 \usebackgroundtemplate{}
 
@@ -38,11 +54,10 @@
     \textit{Demonstração}. \pause 
     Existe um $(A,B)$-bimodulo $X$ de \textit{imprimitividade} tal que \pause
     $$
-    \begin{tikzcd}
-    F(A) \rar{\,\cdot\, \otimes I_X} \dar{\operatorname{ind}} & F(B) \dar{\operatorname{ind}} \\
-    K_0(A) \rar{}                                             & K_0(B)                              
-    \end{tikzcd}
-    $$
+    \xymatrix{
+    F(A) \ar[r]^{\,\cdot\, \otimes Id_X} \ar[d]_{\operatorname{ind}} & F(B) \ar[d]^{\operatorname{ind}}\\
+    K_0(A) \ar@{-->}[r] & K_0(B)
+    }$$
     é comutativo.\hfill $\Box$
 \end{frame}
 
@@ -63,6 +78,7 @@
 
 \section{\texorpdfstring{\ensuremath{C^*}}{C*}-módulos de Hilbert}
 \begin{frame}{\texorpdfstring{\ensuremath{C^*}}{C*}-módulos de Hilbert}
+\nocite{wegge1993k}
     \begin{definicao}
         Um \textit{$C^*$-módulo de Hilbert} $E$ é um $A$-módulo a direita ($A$ uma $C^*$-álgebra complexa), \pause abençoado com um produto interno\footnote{Linear na 1ª e Involuto-linear; Hermitianidade da Involução e positivo definido.}:
         \begin{equation}
@@ -83,6 +99,7 @@
 
 \section{Operadores Compactos e de Fredholm}
 
+\nocite{gracia2013elements}
 \begin{frame}{Digressão: Operadores de Fredholm}
     Os operadores de Fredholm são aqueles $T \in \mathscr B(E,F)$ com núcleo e co-núcleo finito dimensionais, \pause com índice dado
     \[
@@ -126,14 +143,77 @@
     \end{proposicao}
 \end{frame}
 
-\section{Atiyah-Jänich}
+\section{Um retrato de \texorpdfstring{$K_0(A)$}{K0(A)}}
 
-\begin{frame}
+\begin{frame}{Um retrato de \texorpdfstring{$K_0(A)$}{K0(A)}}
     \begin{teorema}
         É um isomorfismo de grupos 
-        $$\operatorname{ind} : \underbrace{\dfrac{``\bigcup\limits_{E,F} \mathscr F(E,F)''}{\footnotesize \operatorname{ind}(T_1)=\operatorname{ind}(T_2)}}_{F(A)} \longrightarrow K_0(A)$$
+        $$\operatorname{ind} : \underbrace{\boxed{\,?\,}}_{F(A)} \longrightarrow K_0(A)$$
     \end{teorema}    
 \end{frame}
-%\bibliographystyle{plain}
-%\bibliography{references}
+
+\begin{frame}{Um retrato de \texorpdfstring{$K_0(A)$}{K0(A)}}
+    \begin{teorema}
+        É um isomorfismo de grupos 
+        $$\operatorname{ind} : \underbrace{\dfrac{``{\bigcup\limits_{E,F} \mathscr F(E,F)}"}{\tiny \operatorname{ind}(T_1)=\operatorname{ind}(T_2)}}_{F(A)} \longrightarrow K_0(A)$$
+    \end{teorema}    
+\end{frame}
+
+\section{Aplicação}
+
+\begin{frame}{Morita-Rieffel}
+    \begin{definicao}
+        $A$ e $B$ são \textit{Morita-Rieffel} equivalentes $\Leftrightarrow$ existe $X$ um $(A,B)$-bimódulo de imprimitividade: \pause
+        \begin{equation*}
+        \xymatrix{
+         & X \times X \ar[ld]_{(\,\cdot\,\mid\,\cdot\,)} \ar[rd]^{\langle\,\cdot\,,\,\cdot\,\rangle}
+         &  \\
+        A & & B\\
+        }
+        \end{equation*}
+        \pause
+        \begin{itemize}
+            \item $\langle X, X\rangle = A$ e $(X\mid X) = B$;\pause
+            \item $(x\mid y) z = x \langle y, z\rangle$.
+        \end{itemize}
+    \end{definicao}\pause
+    \textbf{Exemplos}:
+    \begin{itemize}
+        \item Se $\phi:A\longrightarrow B$ é um isomorfismo, $B$ é um $(A,B)$-bimodulo com $\langle x,y\rangle \coloneqq x^*y$ e $(x,y)\coloneqq \phi^{-1}(xy^*)$. \pause
+        \item $H$ espaço de Hilbert e $\mathscr K$ seus operadores compactos. O produto interno
+        $$(x,y) \coloneqq \langle\,\cdot\,,y\rangle x$$
+        faz com que $H$ seja um $(\mathscr K,\mathbb C)$-bimodulo de imprimitividade.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Isomorfismos estavelmente compactos}
+    \begin{teorema}[Brown, Green, Rieffel \cite{brown1977morita}]
+        Se $A$ e $B$ são $C^*$-álgebras \underline{separáveis} Morita-Rieffel equivalentes, então
+        $$A \otimes \mathscr K \simeq B \otimes \mathscr K$$
+        com $\mathscr K\subset \mathscr B(H)$ operadores compactos.
+    \end{teorema}
+    \pause
+    \textit{Be separable, or die!} É uma condição necessária.
+    \pause
+    \begin{corolario}
+        Se $A$ e $B$ são $C^*$-álgebras {separáveis} Morita-Rieffel equivalentes, então
+        $$K_0(A) \simeq K_0(B) \text{ e } K_1(A) \simeq K_1(B)$$
+    \end{corolario}
+\end{frame}
+
+\begin{frame}{Aplicação}
+    \begin{teorema}[Exel \cite{exel7fredholm}]
+        Se $A$ e $B$ são $C^*$-álgebras \xout{separáveis} Morita-Rieffel equivalentes, o bimódulo de imprimitividade $X$ induz um isomorfismo $X_*$ \pause
+        $$
+    \xymatrix{
+    F(A) \ar[r]^{\,\cdot\, \otimes Id_X} \ar[d]_{\operatorname{ind}} & F(B) \ar[d]^{\operatorname{ind}}\\
+    K_0(A) \ar@{-->}[r]_{X_*} & K_0(B)
+    }$$
+\pause
+        Além disso, $SX \coloneqq C_0(\mathbb R) \otimes X$ é um $(SA, SB)$-bimodulo de imprimitividade, e $(SX)_* :K_1(A) \longrightarrow K_1(B)$ também é um isomorfismo.        
+    \end{teorema}
+\end{frame}
+
+\bibliographystyle{plain}
+\bibliography{references}
 \end{document}

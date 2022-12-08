@@ -82,7 +82,69 @@
 	}
 }
 
+% Funtores
+\usepackage{rotating}
+\usepackage{scalerel}
 
+% \covfunctor{F}{A}{B}{X}{Y}{Z}{W}{f}{g}{x}{y} =
+% F : A -----→ B
+%     X |----→ Y x
+%     |        | -
+%    f|       g| |
+%     ↓        ↓ ↓
+%     Z |----→ W y
+
+%This is a first attemp with only 7 arguments
+\newcommand{\funtordia}[7]{%
+	\begin{tikzcd}[row sep={0.22em}, column sep={0.01em}, ampersand replacement=\&]
+		#1: \& {#2} \arrow[rr] \&[1cm]\& {#3} \&   \\
+		\& #5 \arrow[d,"#4"'] \arrow[rr, mapsto] \& \& #1(#5) \arrow[d,"#1(#4)"'] \& #7 \arrow[d,mapsto]\\[5mm]
+		\& #6 \arrow[rr,mapsto]                     \& \& #1(#6)         \& #7\cdot #4
+	\end{tikzcd}
+}
+
+%This is taken from the egreg's answer in the link you posted
+\ExplSyntaxOn
+\NewDocumentCommand{\NewWeirdCommand}{mm}
+{% #1 = command to define, #2 = replacement text
+	\cs_new:Npn #1 ##1
+	{
+		\tl_set:Nn \l__covfun_args_tl { ##1 }
+		#2
+	}
+}
+\NewDocumentCommand{\Arg}{m}
+{
+	\tl_item:Nn \l__covfun_args_tl { #1 }
+}
+
+\tl_new:N \l__covfun_parse_args_tl
+\ExplSyntaxOff
+
+
+%--------------------------
+\NewWeirdCommand{\covfunctor}{%
+	\begin{tikzcd}[row sep={0.22em}, column sep={0.01em}, ampersand replacement=\&]
+		\Arg{1} \colon \& {\Arg{2}} \arrow[rr] \&[1cm]\& {\Arg{3}} \&   \\
+		\& \Arg{4} \arrow[d,"\Arg{8}"'] \arrow[rr, mapsto] \& \& \Arg{5} \arrow[d,"\Arg{9}"'] \& \Arg{10} \arrow[d,mapsto]\\[5mm]
+		\& \Arg{6} \arrow[rr,mapsto]                     \& \& \Arg{7}         \& \Arg{11}
+	\end{tikzcd}
+}
+\NewWeirdCommand{\contfunctor}{%
+	\begin{tikzcd}[row sep={0.22em}, column sep={0.01em}, ampersand replacement=\&]
+		\Arg{1} \colon \& {\Arg{2}} \arrow[rr] \&[1cm]\& {\Arg{3}} \&   \\
+		\& \Arg{4} \arrow[d,"\Arg{8}"'] \arrow[rr, mapsto] \& \& \Arg{5} \& \Arg{11} \\[5mm]
+		\& \Arg{6} \arrow[rr,mapsto]                     \& \& \Arg{7} \arrow[u,"\Arg{9}"']  \& \Arg{10} \arrow[u,mapsto]
+	\end{tikzcd}
+}
+
+% Função
+\NewWeirdCommand{\function}{%
+	\begin{tikzcd}[row sep={0.22em}, column sep={0.01em}, ampersand replacement=\&]
+		{\Arg{1}}: \& {\Arg{2}} \arrow[rr] \& [0.5cm] \& {\Arg{3}} \& {\hphantom{\Arg{1}}} \\
+		\& {\Arg{4}} \arrow[rr, mapsto] \&  \& {\Arg{5}} \&
+	\end{tikzcd}
+}
 
 
 \newcommand{\consep}[1]{{#1}^{\textsc{sep}}}
