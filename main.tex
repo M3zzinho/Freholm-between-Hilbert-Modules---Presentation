@@ -1,0 +1,139 @@
+\documentclass[handout, 9pt, compress]{beamer}
+\input{preamble}
+\title{Operadores de Fredholm entre \texorpdfstring{\ensuremath{C^*}}{C*}-módulos de Hilbert}
+\author{Gustavo Pauzner Mezzovilla}
+\date{}
+
+\begin{document}
+
+{\usebackgroundtemplate{%
+  \transparent{0.4}\includegraphics[width=\paperwidth,height=\paperheight]{capa}} 
+\begin{frame}
+    \maketitle
+\end{frame}
+\usebackgroundtemplate{}
+
+\section{Pré-requisitos e Motivação}
+\begin{frame}{Pré-requisitos}
+    \[\boxed{\begin{array}{cl}
+       {\footnotesize \textcolor{gray}{1}} & \texttt{\textcolor{red}{import} \textit{C}$^*$-algebras}.\textcolor{blue}{\texttt{complex}} \\
+       \pause
+       %------------------------------
+       {\footnotesize \textcolor{gray}{2}} &\texttt{\textcolor{red}{from} functional-analysis \textcolor{red}{import} hilbert-spaces,} \\
+       & \hphantom{\texttt{\textcolor{red}{from} functional-analysis \textcolor{red}{imp}}}\texttt{fredholm-operators}\\ \pause
+       %------------------------------
+
+       {\footnotesize \textcolor{gray}{3}} & \texttt{\textcolor{red}{from} ring-theory \textcolor{red}{import} left\_modules,}\\ 
+       & \hphantom{\texttt{\textcolor{red}{from} ring-theory \textcolor{red}{impo}}}\texttt{right\_modules, bimodules} \\\pause
+       {\footnotesize \textcolor{gray}{4}} & \textcolor{gray}{\texttt{\# \textit{so por seguranca}}} \\
+       {\footnotesize \textcolor{gray}{5}} & \texttt{\textcolor{red}{from} \textit{K}-theory.\textcolor{blue}{banach-algebras} \textcolor{red}{import} $K_0, K_1$} \\
+        \end{array}}\]
+\end{frame}
+
+\begin{frame}[fragile]{Motivação: \textit{Teorema de Exel}}
+    \begin{teorema}[Exel (1992)]
+        Os $K$-grupos de duas $C^*$-álgebras Morita-Rieffel equivalentes (não necessariamente separáveis) coincidem.
+    \end{teorema}
+
+    \textit{Demonstração}. \pause 
+    Existe um $(A,B)$-bimodulo $X$ de \textit{imprimitividade} tal que \pause
+    $$
+    \begin{tikzcd}
+    F(A) \rar{\,\cdot\, \otimes I_X} \dar{\operatorname{ind}} & F(B) \dar{\operatorname{ind}} \\
+    K_0(A) \rar{}                                             & K_0(B)                              
+    \end{tikzcd}
+    $$
+    é comutativo.\hfill $\Box$
+\end{frame}
+
+\begin{frame}{Hummmm...}
+    \begin{figure}[h]
+        \includegraphics[width=0.45\linewidth]{hummm.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Itinerário}
+    \begin{itemize}
+        \item Conhecer módulos de Hilbert sobre $C^*$-álgebras.\pause
+        \item Conhecer os Operadores de Fredholm entre $C^*$-módulos.\pause
+        \item Ter uma noção do \textit{índice} e do isomorfismo $F(A)\longrightarrow K_0(A)$. \pause
+        \item Dar um suspiro na motivação do teorema de Exel.
+    \end{itemize}
+\end{frame}
+
+\section{\texorpdfstring{\ensuremath{C^*}}{C*}-módulos de Hilbert}
+\begin{frame}{\texorpdfstring{\ensuremath{C^*}}{C*}-módulos de Hilbert}
+    \begin{definicao}
+        Um \textit{$C^*$-módulo de Hilbert} $E$ é um $A$-módulo a direita ($A$ uma $C^*$-álgebra complexa), \pause abençoado com um produto interno\footnote{Linear na 1ª e Involuto-linear; Hermitianidade da Involução e positivo definido.}:
+        \begin{equation}
+            \langle \,\cdot\,, \,\cdot\,\rangle : E \times E \longrightarrow A
+        \end{equation}   
+        onde a norma $\Vert x\Vert \coloneqq \sqrt{ \Vert\langle x, x\rangle\Vert}$ é completa.
+    \end{definicao}
+
+    \pause
+
+    \begin{observacao}
+        \begin{itemize}
+            \item \colorbox{red}{\textcolor{white}{\texttt{!Error304 at ``from hilbert-$C^*$-modules import riezs-lemma'' :}}} \colorbox{red}{\textcolor{white}{\texttt{--> \textit{No ``riezs-lemma'' found}}}} \pause 
+            \item Nem todo operador linear tem adjunto.
+        \end{itemize}
+    \end{observacao}
+\end{frame}
+
+\section{Operadores Compactos e de Fredholm}
+
+\begin{frame}{Digressão: Operadores de Fredholm}
+    Os operadores de Fredholm são aqueles $T \in \mathscr B(E,F)$ com núcleo e co-núcleo finito dimensionais, \pause com índice dado
+    \[
+    \operatorname{ind}(T) \coloneqq \dim \ker T - \dim \ker T^* \in \mathbb Z    
+    \]
+    \pause
+    \begin{invocacao}[Teorema de Atikinson]
+        Os operadores de Fredholm são precisamente os invertíveis módulo compacto, \pause i.e., 
+        \[
+            T :H_1 \longrightarrow H_2 \text{ é Fredholm}\Longleftrightarrow \begin{array}{c}
+                \exists\,S: H_2\longrightarrow H_1, \text{t.q.} \\
+                Id_{H_2}-ST \text{ e } Id_{H_1}-TS \\
+                \text{são compactos}
+            \end{array} 
+        \]
+    \end{invocacao}
+\end{frame}
+
+\begin{frame}{\slash\slash\hspace{1cm} entre \texorpdfstring{\ensuremath{C^*}}{C*}-módulos de Hilbert}
+    Entre $A$-módulos $E$ e $F$ de Hilbert, operadores da forma $\theta_{x,y} \coloneqq \sum_n y_n \langle x_n, \,\cdot\,\rangle$ são os de \textit{rank-finito}. \pause
+    \begin{definicao}[Operadores Compactos]
+        $\mathscr K(E,F) \coloneqq \overline{\operatorname{Span}_{x,y} \theta_{x,y}}$ é um ideal bilateral dos adjuntáveis $\mathscr L(E,F)$. 
+    \end{definicao}
+\pause
+    \begin{definicao}
+        Os operadores de Fredholm entre $E$ e $F$ são os invertíveis módulo compacto.
+    \end{definicao}
+\end{frame}
+
+\begin{frame}{Índice}
+    Os módulos de \textit{rank-finito} $M$ são os isomorfos a $pA^n$, com $p$ matriz idempotente $n\times n$.\pause
+    \[
+    \operatorname{rank}(M) \coloneqq [p]_0  \in K_0(A)  
+    \]
+    \pause
+    \begin{proposicao}[Definição do Índice]
+         $T:E\longrightarrow F$ é Fredholm $\Leftrightarrow$ são módulos de rank-finito $\ker T$ e $\ker T^*$. \pause O índice de $T$ é dado por
+         \[
+         \operatorname{ind}(T) \coloneqq \operatorname{rank}(\ker T) -\operatorname{rank}(\ker T^*)   
+         \]
+    \end{proposicao}
+\end{frame}
+
+\section{Atiyah-Jänich}
+
+\begin{frame}
+    \begin{teorema}
+        É um isomorfismo de grupos 
+        $$\operatorname{ind} : \underbrace{\dfrac{``\bigcup\limits_{E,F} \mathscr F(E,F)''}{\footnotesize \operatorname{ind}(T_1)=\operatorname{ind}(T_2)}}_{F(A)} \longrightarrow K_0(A)$$
+    \end{teorema}    
+\end{frame}
+%\bibliographystyle{plain}
+%\bibliography{references}
+\end{document}
