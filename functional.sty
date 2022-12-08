@@ -1,0 +1,31 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{functional}
+  [2020/09/10 1.0.0 Usefull definitions for Category Theory]
+
+\RequirePackage{amsmath}
+
+\DeclareMathOperator{\Obj}{Obj} % The class of objects of a category
+\DeclareMathOperator{\Hom}{Hom} % The class of morphisms of a category
+\DeclareMathOperator{\End}{End} % Endomorphisms
+\DeclareMathOperator{\Aut}{Aut} % Automorphisms
+\DeclareMathOperator{\coker}{coker} % Cokernel
+
+% Function stuff
+\DeclareMathOperator{\dom}{dom}       % The domain of a morphism
+\DeclareMathOperator{\codom}{codom}   % The codomain of a morphism
+\DeclareMathOperator{\im}{im}         % The image of morphism
+\DeclareMathOperator{\id}{id}         % Identity function
+\newcommand{\To}{\Rightarrow}         % Natural transformation
+\DeclareMathOperator{\ot}{\leftarrow} % Reversed morphism
+\DeclareMathOperator{\Ot}{\Leftarrow} % Reversed natural transformation
+\newcommand{\fmapsto}[1]
+  {\overset{#1}{\longmapsto}}       % Map declaration
+
+\newcommand{\subobject}{\le}        % A subobject of an object
+\newcommand{\normal}{\triangleleft} % A normal subobject in a pointed cathegory
+
+% Notable categories
+\newcommand{\Grp}{\mathbf{Grp}}
+\newcommand{\GrpTop}{\mathbf{GrpTop}} % The category of topological groups
+
+\endinput

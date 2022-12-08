@@ -1,0 +1,123 @@
+\usepackage{pgfplots}
+\usepackage{listings}
+
+\usepackage{tikz, tikz-cd}
+\usepackage{amsmath, amsfonts, amsthm, amssymb, mathtools}
+
+\usepackage{graphicx, wrapfig}
+\usepackage{multicol, multirow}
+\usepackage{enumerate, enumitem}
+\usepackage{esint}
+\usepackage[makeroom]{cancel}
+\usepackage{upgreek}
+\usepackage{xfrac}
+\usepackage{makeidx}
+\usepackage{marvosym}
+\usepackage{float}
+\usepackage{wasysym}
+\usepackage{arydshln}
+\usepackage{appendix}
+\usepackage{stmaryrd}
+\usepackage{mathrsfs}
+\usepackage{natbib}
+\usepackage{tagging}
+\usepackage[brazil]{babel}
+\usepackage{xalgebra, xtopology, functional} % Pacotes do pablo
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{centernot}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{lipsum}
+\usepackage{epigraph}
+\usepackage{transparent}
+\usepackage[text={}]{draftwatermark}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{gensymb}
+\usepackage{transparent}
+
+% A cor dos link
+\definecolor{coolyellow}{RGB}{4, 6, 76}
+
+% Configura a aparência dos link
+\hypersetup{
+	colorlinks=true,
+%	citecolor=purple, % Dexa azul po
+	linkcolor=coolyellow, 
+	%filecolor=magenta,      
+%	urlcolor=purple,
+}
+
+% Configurações gráficas
+\usetikzlibrary{calc,shadows.blur}
+\pgfplotsset{compat=1.16}
+
+% Corrige o simbolo \qed
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+%  Corrige os símbolos de desigualdades
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\preceq}{\preccurlyeq}
+\renewcommand{\succeq}{\succcurlyeq}
+
+% Corrige os símbolos de funções
+\renewcommand{\to}{\longrightarrow}
+\renewcommand{\mapsto}{\longmapsto}
+
+% Conjuntos
+\newcommand{\card}[1]{\left\lvert\nobreak#1\nobreak\right\rvert}
+\DeclareMathOperator{\ineq}{\underline{\in}}
+\DeclareMathOperator{\nieq}{\underline{\ni}}
+
+% Setas que nao vem por padrão
+\newcommand{\longhookrightarrow}{\lhook\joinrel\longrightarrow}
+\newcommand{\longhookleftarrow}{\longleftarrow\joinrel\rhook}
+\DeclareRobustCommand\longtwoheadrightarrow
+     {\relbar\joinrel\twoheadrightarrow}
+
+% \sfrac grandao
+\newcommand{\mfrac}[2]{{{\Large{\sfrac{{#1}}{{#2}}}}}}
+
+
+\input{macros}
+
+% Ambientes de teoremas
+\newtheorem*{teorema}{Teorema}
+\newtheorem*{corolario}{Corolário}
+\newtheorem*{lema}{Lema}
+\newtheorem*{proposicao}{Proposição}
+\theoremstyle{definicao}
+\newtheorem*{exemplo}{Exemplo}
+\newtheorem*{definicao}{Definição}
+\newtheorem*{axioma}{Axioma}
+\newtheorem*{invocacao}{Invocação} 
+\theoremstyle{remark}
+\newtheorem*{afirmacao}{Afirmação} 
+\newtheorem*{observacao}{Observação}
+\newtheorem*{notacao}{Notação}
+
+% Configura as paradas do Beamer
+\usetheme{Rochester}
+\usecolortheme{crane}
+\usefonttheme{serif}
+\setbeamertemplate{itemize items}{\textbullet}
+\setbeamertemplate{bibliography item}{\textbullet}
+
+% Configura as bolinha das lista
+\setenumerate[0]{label={\color{coolyellow}\normalfont(\roman*)}}
+\setitemize{label=\usebeamerfont*{itemize item}%
+    \usebeamercolor[fg]{itemize item}
+    \usebeamertemplate{itemize item}}
+
+\newcommand{\invlim}{\varprojlim}
+
+\usetag{beamer}

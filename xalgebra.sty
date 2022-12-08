@@ -1,0 +1,54 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{xalgebra}[2020/09/10 1.0.0 Usefull definitions for Algebra]
+
+\RequirePackage{amssymb}  % For the standard sets
+\RequirePackage{amsmath}  % For the \DeclareMathOperator
+\RequirePackage{mathrsfs} % For \mathscr
+
+% Standard rings and fields
+\newcommand{\NN}{\mathbb{N}}   % Natural numbers
+\newcommand{\ZZ}{\mathbb{Z}}   % Integers
+\newcommand{\QQ}{\mathbb{Q}}   % Rational numbers
+\newcommand{\RR}{\mathbb{R}}   % Real numbers
+\newcommand{\CC}{\mathbb{C}}   % Complex numbers
+\newcommand{\HH}{\mathbb{H}}   % Quaternions
+\newcommand{\OO}{\mathbb{O}}   % Octonions
+\renewcommand{\SS}{\mathbb{S}} % Sedenions
+\newcommand{\EE}{\mathbb{E}}   % Generic field
+\newcommand{\FF}{\mathbb{F}}   % Generic field
+\newcommand{\KK}{\mathbb{K}}   % Generic field
+\newcommand{\LL}{\mathbb{L}}   % Generic field
+
+
+
+% Linear Algebra stuff
+\newenvironment{system}
+  {\left \{ \begin{aligned}}
+  {\end{aligned} \right.}          % Linear system of equations
+\DeclareMathOperator{\vspan}{span} % Set span
+\DeclareMathOperator{\Tr}{Tr}      % Operator trace
+\DeclareMathOperator{\Id}{Id}      % Identity operator
+\DeclareMathOperator{\Bil}{Bil}    % The space of bilinear maps
+\DeclareMathOperator{\Mat}{Mat}    % Matrix algebra
+\DeclareMathOperator{\Sym}{Sym}    % Symetric product of vector-spaces
+\newcommand{\base}{\mathscr B}     % Vectorspace base
+\newcommand{\norm}[1]{\left\lVert\nobreak#1\nobreak\right\rVert} % Vector norm
+
+% Group Theory stuff
+\DeclareMathOperator{\Inn}{Inn}  % Inner automorphism group
+\DeclareMathOperator{\Out}{Out}  % Outer automorphism group
+\DeclareMathOperator{\sgn}{sgn}  % Permutation sign (parity)
+\DeclareMathOperator{\GL}{GL}    % General linear group
+\DeclareMathOperator{\SL}{SL}    % Simple linear group
+\DeclareMathOperator{\Gal}{Gal}  % Galois group
+
+% Ring Theory stuff
+\DeclareMathOperator{\Frac}{Frac}  % Field of fractions
+\DeclareMathOperator{\fchar}{char} % Field characteristic
+
+% Representation Theory stuff (algebras, groups, quivers, whatever)
+\DeclareMathOperator{\Rad}{Rad} % Jacobson radical
+\DeclareMathOperator{\Ind}{Ind} % Induced representation
+
+\endinput
+

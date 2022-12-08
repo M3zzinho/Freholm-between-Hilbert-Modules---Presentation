@@ -1,0 +1,88 @@
+%Símbolos comuns
+\DeclareMathOperator{\Mi}{\,\,\geqslant\,\,}
+\DeclareMathOperator{\mi}{\,\,\leqslant\,\,}
+\DeclareMathOperator{\mif}{\preccurlyeq}
+\DeclareMathOperator{\Mif}{\succcurlyeq}
+\DeclareMathOperator{\subnvazio}{\underset{^{\neq \varnothing}}{\subset}}
+\usepackage{tipa}
+\DeclareMathOperator{\vargamma}{\Large\text{\textramshorns}}
+
+%Trigonométricas
+\DeclareMathOperator{\sen}{\operatorname{sen}}
+
+% Math symbol font matha
+\DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+\DeclareFontShape{U}{matha}{m}{n}{
+	<5> <6> <7> <8> <9> <10> gen * matha
+	<10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+}{}
+\DeclareSymbolFont{matha}{U}{matha}{m}{n}
+\DeclareFontSubstitution{U}{matha}{m}{n}
+% Math symbol font mathb
+\DeclareFontFamily{U}{mathx}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathx}{m}{n}{
+	<5> <6> <7> <8> <9> <10>
+	<10.95> <12> <14.4> <17.28> <20.74> <24.88>
+	mathx10
+}{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareFontSubstitution{U}{mathx}{m}{n}
+
+% Symbol definition
+\DeclareMathDelimiter{\vvvert}{0}{matha}{"7E}{mathx}{"17}
+\newcommand{\trinorma}[1]{\left\vvvert {#1}\right\vvvert}
+
+% Cálculo
+\DeclareMathOperator{\del}{\chapterial}
+\newcommand{\classe}[1]{\mathscr{C}^{#1}}
+\newcommand{\simples}[2]{\displaystyle \dfrac{{\td}{#1}}{{\td}{#2}}}
+\newcommand{\parcial}[2]{\displaystyle\dfrac{\partial{#1}}{\partial{#2}}}
+\newcommand{\pardois}[3]{\displaystyle\dfrac{\partial^2{#1}}{\partial{#2}\partial{#3}}}
+\newcommand{\Lim}[2]{\displaystyle\lim_{#1\to#2}}
+\newcommand{\Int}[2]{\displaystyle\int\limits_{#1}^{#2} }
+\newcommand{\de}[1]{{\operatorname{d}}{#1}}
+
+% Complexos
+\newcommand{\con}[1]{\overline{#1}}
+\newcommand{\cis}[1]{\text{cis}\left({#1}\right)}
+\newcommand{\ordem}[2]{{\operatorname{ord}}\left({#1},{#2}\right)}
+\newcommand{\res}[2]{{\operatorname{Res}}\left({#1},{#2}\right)}
+
+%Abreviações
+
+\newcommand{\evt}{\textsc{evt}}
+
+\newcommand{\vazio}{\varnothing}
+
+\newcommand{\somadir}[3]{
+	\underset{{#1}}{\overset{{#2}}{\displaystyle\bigoplus}}\, {#3}
+}
+
+\newcommand{\inv}[1]{{#1}^{-1}}
+
+\newcommand{\e}{\hspace{10px}\text{ e } \hspace{10px}}
+\newcommand{\tenpx}{\hspace{10px}}
+
+\newcommand{\sigalg}{$\sigma$-álgebra}
+
+% Letras Gregas bbold
+
+\newcommand{\GGamma}{\text{\reflectbox{\rotatebox[origin=c]{180}{$\mathbb L$}}}}
+\newcommand{\LLambda}{\text{\reflectbox{\rotatebox[origin=c]{180}{\reflectbox{$\mathbb V$}}}}}
+\newcommand{\Eexists}{\text{\reflectbox{$\mathbb E$}}}
+
+\newcommand{\DDelta}{
+	\mathrlap{\Delta \hspace{0.105cm}}{
+		\begin{tikzpicture}
+			\draw (0,0) -- (0,0.000001);
+			\draw  (0.0582,0.01 - 0.004) -- 
+			(0.0582+0.33*0.31779334981768276,
+			0.33*0.6237045669318574- 0.004);
+		\end{tikzpicture}\hspace{0.105cm}
+	}
+}
+
+
+
+
+\newcommand{\consep}[1]{{#1}^{\textsc{sep}}}
